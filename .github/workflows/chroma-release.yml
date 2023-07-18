@@ -49,7 +49,7 @@ jobs:
         docker run -d --rm --name rc "${{ steps.tag.outputs.tag_name }}-rc" 
         sleep 30
         docker logs rc
-        if ! docker logs rc | grep -i " error"; then
+        if docker logs rc | grep -i " error"; then
             echo "No errors found in log"
             docker stop rc         
         else
