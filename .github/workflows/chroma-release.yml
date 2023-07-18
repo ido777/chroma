@@ -50,11 +50,9 @@ jobs:
         sleep 30
         docker logs rc
         if docker logs rc | grep -i " error"; then
-            echo "No errors found in log"
-            docker stop rc         
+            echo "No errors found in log"       
         else
             echo "Errors found in log"
-            docker stop rc            
             exit 1
         fi
 
