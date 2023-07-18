@@ -1,11 +1,13 @@
 name: Chroma Release Candidate
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - '*'
     branches:
       - main
+      - add-pre-release-workflow
 
 env:
   REGISTRY: ghcr.io
