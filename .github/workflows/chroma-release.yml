@@ -1,6 +1,7 @@
 name: Chroma Release
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Chroma Release Candidate"]
     types:
