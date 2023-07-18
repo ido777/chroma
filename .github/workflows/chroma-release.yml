@@ -46,10 +46,12 @@ jobs:
     - name: Run sanity tests
       run: |
         # Run your sanity tests here. If any command fails, the workflow will stop.
-        docker run --rm --name rc "${{ steps.tag.outputs.tag_name }}-rc" 
+        docker run -d --rm --name rc "${{ steps.tag.outputs.tag_name }}-rc" 
+        sleep 30
+        docker stop rc
         docker logs rc
         if ! docker logs rc | grep -i " error"; then
-            echo "No errors found in log"
+            echo "No errors found in log"         
         else
             echo "Errors found in log"
             exit 1
