@@ -53,13 +53,11 @@ jobs:
       run: |
         # Run your sanity tests here. If any command fails, the workflow will stop.
         docker run --rm "${{ steps.tag.outputs.tag_name }}-rc" -name "${{ steps.tag.outputs.tag_name }}
-        docker logs rc 2> error.log
-        if ! grep -i "error" docker.log; then
+        docker logs "${{ steps.tag.outputs.tag_name }}-rc"
+        if ! docker logs "${{ steps.tag.outputs.tag_name }}-rc" | grep -i " error"; then
             echo "No errors found in log"
-            exit 0
         else
             echo "Errors found in log"
-            docker logs rc
             exit 1
         fi
 
