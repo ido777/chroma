@@ -11,7 +11,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: "ghcr.io/chroma-core/chroma"
+  IMAGE_NAME: "ghcr.io/ido777/chroma"
 
 jobs:
   build-and-release:
