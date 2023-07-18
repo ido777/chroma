@@ -6,15 +6,15 @@ on:
     workflows: ["Chroma Release Candidate"]
     types:
       - completed
-  # push:
-  #   tags:
-  #     - '*'
-  #   branches:
-  #     - add-pre-release-workflow      
+  push:
+    tags:
+      - '*'
+    branches:
+      - add-pre-release-workflow      
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: "ghcr.io/ido777/chroma"
+  IMAGE_NAME: "ghcr.io/${{ github.actor }}/chroma"
 
 jobs:
   test-and-release:
